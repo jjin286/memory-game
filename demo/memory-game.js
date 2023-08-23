@@ -43,6 +43,23 @@ function createCards(colors) {
 
   for (let color of colors) {
     // missing code here ...
+    let card = document.createElement('div');
+    card.classList.add('card');
+    card.setAttribute('data-color', color);
+    card.addEventListener('click', handleCardClick);
+
+    let front = document.createElement('div');
+    front.classList.add('front');
+    front.textContent += "front";
+    card.append(front);
+
+    let back = document.createElement('div');
+    back.classList.add('back');
+    back.textContent += "back";
+    back.style.backgroundColor = color;
+    card.append(back);
+
+    gameBoard.append(card);
   }
 }
 
@@ -50,16 +67,63 @@ function createCards(colors) {
 
 function flipCard(card) {
   // ... you need to write this ...
+  card.target.classList.toggle('flipped');
 }
 
 /** Flip a card face-down. */
 
 function unFlipCard(card) {
   // ... you need to write this ...
+  console.log("Unflipped")
+  if(card.target){
+    card.target.classList.remove('flipped');
+    card.target.style.backgroundColor = 'white';
+  } else {
+    card.classList.remove('flipped');
+    card.style.backgroundColor = 'white';
+  }
+
 }
 
 /** Handle clicking on a card: this could be first-card or second-card. */
 
-function handleCardClick(evt) {
+function handleCardClick(e) {
   // ... you need to write this ...
+  // cardList contains all elements with the card class
+  let cardList = document.querySelectorAll('.card');
+  let flipped = [];
+
+
+  for(let card of cardList){
+    if(card.classList.contains('flipped') && !card.classList.contains('matched')){
+      flipped.push(card);
+    }
+  }
+
+  if(flipped.length < 2 && !e.target.classList.contains('matched') && !e.target.classList.contains('flipped')){
+    flipCard(e);
+    flipped.push(e.target);
+  }
+
+
+  console.log(flipped)
+  if(flipped.length === 2){
+    console.log("Triggered")
+    if(flipped[0].dataset.color === flipped[1].dataset.color){
+      flipped.forEach((x)=> {
+        x.classList.add('matched');
+      })
+    } else {
+      setTimeout(() => {
+        flipped.forEach((x) => {
+          console.log(x)
+          unFlipCard(x);
+        })
+      }, 1000);
+    }
+  }
+
+  console.log("Flipped", flipped);
 }
+
+// 2am - 5
