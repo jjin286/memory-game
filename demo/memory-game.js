@@ -168,6 +168,7 @@ function gameOver(){
   }
 
   over.style.display = 'grid';
+  checkLowestScore(score);
   console.log("GAME OVER")
   return true;
 }
@@ -175,6 +176,7 @@ function gameOver(){
 
 //Increase score
 let score = 0;
+let lowestScore = Infinity;
 function increaseScore(){
   let scoreBoard = document.querySelectorAll('#score');
   score++;
@@ -189,6 +191,15 @@ function resetScore(){
   score = 0;
   scoreBoard[0].textContent = "Score: " + score;
   scoreBoard[1].textContent = score;
+}
+
+//Check lowest score
+function checkLowestScore(score){
+  let lowestScoreBoard = document.querySelector('#lowest-score');
+  if(score < lowestScore){
+    lowestScore = score;
+    lowestScoreBoard.textContent = "Best Score: " + lowestScore;
+  }
 }
 
 initStart();
