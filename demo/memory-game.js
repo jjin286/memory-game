@@ -129,15 +129,23 @@ function handleCardClick(e) {
 // Add event listener to start
 function initStart(){
   let startButton = document.querySelector('.begin-button');
-
+  let restartButton = document.querySelector('.restart-button');
   startButton.addEventListener('click', startGame);
-
+  restartButton.addEventListener('click', restartGame);
 }
 
 // Hide start menu and start game
 function startGame(){
   let start = document.querySelector('.start');
   start.classList.add('hide');
+}
+
+//Restart game
+function restartGame(){
+  document.querySelectorAll('.card').forEach(x => x.remove());
+
+  let colors = shuffle(COLORS);
+  createCards(colors);
 }
 
 initStart();
