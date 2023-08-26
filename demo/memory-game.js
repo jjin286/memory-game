@@ -122,16 +122,18 @@ function handleCardClick(e) {
       }, 1000);
     }
   }
-
+  gameOver();
   console.log("Flipped", flipped);
 }
 
 // Add event listener to start
 function initStart(){
   let startButton = document.querySelector('.begin-button');
-  let restartButton = document.querySelector('.restart-button');
+  let restartButton = document.querySelectorAll('.restart-button');
   startButton.addEventListener('click', startGame);
-  restartButton.addEventListener('click', restartGame);
+  restartButton.forEach((x) => {
+    x.addEventListener('click', restartGame);
+  })
 }
 
 // Hide start menu and start game
@@ -142,10 +144,30 @@ function startGame(){
 
 //Restart game
 function restartGame(){
+  let over = document.querySelector('.game-over');
   document.querySelectorAll('.card').forEach(x => x.remove());
-
   let colors = shuffle(COLORS);
   createCards(colors);
+
+  if(!gameOver()){
+    over.style.display = 'none';
+  }
+}
+
+//Check if game is over/game over screen
+function gameOver(){
+  let cards = document.querySelectorAll('.card');
+  let over = document.querySelector('.game-over');
+
+  for(let card of cards){
+    if(!card.classList.contains('matched')){
+      return false;
+    }
+  }
+
+  over.style.display = 'grid';
+  console.log("GAME OVER")
+  return true;
 }
 
 initStart();

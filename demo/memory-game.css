@@ -1,4 +1,10 @@
 /* you can add to or change this. */
+body{
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  background-color: black;
+}
+
 /* Start */
 .start{
   position: absolute;
@@ -13,8 +19,6 @@
   background-color: black;
   z-index: 5;
   overflow: hidden;
-  font-family: 'Press Start 2P', cursive;
-  color: white;
 }
 
 .hide{
@@ -38,6 +42,31 @@
 
 .begin-button:hover{
   color: lightgreen;
+}
+
+.restart-button:hover{
+  color: lightgreen;
+  cursor: pointer;
+}
+
+/* Game over */
+.game-over{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  width: 440px;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+
+  background-color: black;
+  border: 2px solid white;
 }
 
 /* Game */
