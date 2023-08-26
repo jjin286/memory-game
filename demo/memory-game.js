@@ -40,12 +40,34 @@ function shuffle(items) {
 
 function createCards(colors) {
   const gameBoard = document.getElementById("game");
+  let imageArr = shuffle(imageList());
 
-  for (let color of colors) {
+  // for (let color of colors) {
+  //   // missing code here ...
+  //   let card = document.createElement('div');
+  //   card.classList.add('card');
+  //   card.setAttribute('data-color', color);
+  //   card.addEventListener('click', handleCardClick);
+
+  //   let front = document.createElement('div');
+  //   front.classList.add('front');
+  //   front.textContent += "front";
+  //   card.append(front);
+
+  //   let back = document.createElement('div');
+  //   back.classList.add('back');
+  //   back.textContent += "back";
+  //   back.style.backgroundColor = color;
+  //   card.append(back);
+
+  //   gameBoard.append(card);
+  // }
+
+  for (let image of imageArr) {
     // missing code here ...
     let card = document.createElement('div');
     card.classList.add('card');
-    card.setAttribute('data-color', color);
+    card.setAttribute('data-image', image);
     card.addEventListener('click', handleCardClick);
 
     let front = document.createElement('div');
@@ -56,7 +78,7 @@ function createCards(colors) {
     let back = document.createElement('div');
     back.classList.add('back');
     back.textContent += "back";
-    back.style.backgroundColor = color;
+    back.style.backgroundImage = 'url(' + image + ')';
     card.append(back);
 
     gameBoard.append(card);
@@ -108,9 +130,25 @@ function handleCardClick(e) {
 
 
   console.log(flipped)
+  // if(flipped.length === 2){
+  //   console.log("Triggered")
+  //   if(flipped[0].dataset.color === flipped[1].dataset.color){
+  //     flipped.forEach((x)=> {
+  //       x.classList.add('matched');
+  //     })
+  //   } else {
+  //     setTimeout(() => {
+  //       flipped.forEach((x) => {
+  //         console.log(x)
+  //         unFlipCard(x);
+  //       })
+  //     }, 1000);
+  //   }
+  // }
+
   if(flipped.length === 2){
     console.log("Triggered")
-    if(flipped[0].dataset.color === flipped[1].dataset.color){
+    if(flipped[0].dataset.image === flipped[1].dataset.image){
       flipped.forEach((x)=> {
         x.classList.add('matched');
       })
@@ -202,6 +240,28 @@ function checkLowestScore(score){
   }
 }
 
+//Random images
+function randomImage(){
+  let randomNum = Math.floor(Math.random() * 1000);
+  return "https://picsum.photos/seed/" + randomNum + "/100/100";
+}
+
+//Generate image array
+function imageList(num){
+  let images = [];
+  if(!num){
+    num = 10;
+  }
+  for(let i = 0; i < num; i++){
+    let image = randomImage();
+    images.push(image);
+    images.push(image);
+  }
+  console.log(images);
+  return images;
+}
+
+let imageArr = imageList();
 initStart();
 
 // 2am - 5
