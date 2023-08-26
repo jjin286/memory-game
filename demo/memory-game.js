@@ -68,6 +68,7 @@ function createCards(colors) {
 function flipCard(card) {
   // ... you need to write this ...
   card.target.classList.toggle('flipped');
+  increaseScore();
 }
 
 /** Flip a card face-down. */
@@ -148,6 +149,7 @@ function restartGame(){
   document.querySelectorAll('.card').forEach(x => x.remove());
   let colors = shuffle(COLORS);
   createCards(colors);
+  resetScore();
 
   if(!gameOver()){
     over.style.display = 'none';
@@ -170,8 +172,28 @@ function gameOver(){
   return true;
 }
 
+
+//Increase score
+let score = 0;
+function increaseScore(){
+  let scoreBoard = document.querySelectorAll('#score');
+  score++;
+  console.log("Score", score)
+  scoreBoard[0].textContent = "Score: " + score;
+  scoreBoard[1].textContent = score;
+}
+
+//Reset score
+function resetScore(){
+  let scoreBoard = document.querySelectorAll('#score');
+  score = 0;
+  scoreBoard[0].textContent = "Score: " + score;
+  scoreBoard[1].textContent = score;
+}
+
 initStart();
 
 // 2am - 5
-// 7pm
+// 7pm - 9
+// 12am
 
