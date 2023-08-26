@@ -1,5 +1,46 @@
 /* you can add to or change this. */
+/* Start */
+.start{
+  position: absolute;
+  display: grid;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 5;
+  overflow: hidden;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+}
 
+.hide{
+  display: none;
+}
+
+.title{
+  font-size: 5vw;
+  cursor: default;
+}
+
+.begin-button{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  font-size: 2vw;
+  margin: 0 20vw 0 20vw;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.begin-button:hover{
+  color: lightgreen;
+}
+
+/* Game */
 .card {
   position: relative;
   border: 1px solid black;

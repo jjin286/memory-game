@@ -126,4 +126,22 @@ function handleCardClick(e) {
   console.log("Flipped", flipped);
 }
 
+// Add event listener to start
+function initStart(){
+  let startButton = document.querySelector('.begin-button');
+
+  startButton.addEventListener('click', startGame);
+
+}
+
+// Hide start menu and start game
+function startGame(){
+  let start = document.querySelector('.start');
+  start.classList.add('hide');
+}
+
+initStart();
+
 // 2am - 5
+// 7pm
+
