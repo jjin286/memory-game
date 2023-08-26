@@ -3,6 +3,7 @@ body{
   font-family: 'Press Start 2P', cursive;
   color: white;
   background-color: black;
+  text-align: center;
 }
 
 /* Start */
@@ -70,6 +71,10 @@ body{
 }
 
 /* Game */
+#game{
+  margin: 0 5vw;
+}
+
 .card {
   position: relative;
   border: 1px solid black;
@@ -103,3 +108,36 @@ body{
   transform: rotateY(180deg);
   transition: transform 0.8s;
 }
+
+/* Bottom */
+
+.bottom{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 5vw;
+}
+
+input[type=text]{
+  width: 20%;
+  background-color: black;
+  color: white;
+  border: 1px solid lightgreen;
+  padding: 2px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+input[type=submit]{
+  background-color: black;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  border: none;
+}
+
+input[type=submit]:hover{
+  color: lightgreen;
+  cursor: pointer;
+}
+
+/* Change so that best score changes when card number changes */
+/* Check input if greater than certain number, is actually a number,
+  is an even number, and other requirements that may come to mind */

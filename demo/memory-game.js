@@ -7,10 +7,10 @@ const COLORS = [
   "red", "blue", "green", "orange", "purple",
   "red", "blue", "green", "orange", "purple",
 ];
-
+let cardNum = 8;
 const colors = shuffle(COLORS);
 
-createCards(colors);
+
 
 
 /** Shuffle array items in-place and return shuffled array. */
@@ -38,7 +38,7 @@ function shuffle(items) {
  * - a click event listener for each card to handleCardClick
  */
 
-function createCards(colors) {
+function createCards() {
   const gameBoard = document.getElementById("game");
   let imageArr = shuffle(imageList());
 
@@ -169,6 +169,14 @@ function handleCardClick(e) {
 function initStart(){
   let startButton = document.querySelector('.begin-button');
   let restartButton = document.querySelectorAll('.restart-button');
+  let submit = document.querySelector('input[type="submit"]');
+
+  createCards();
+
+  submit.addEventListener('click', function(e){
+    e.preventDefault();
+    changeCardNum();
+  })
   startButton.addEventListener('click', startGame);
   restartButton.forEach((x) => {
     x.addEventListener('click', restartGame);
@@ -185,8 +193,7 @@ function startGame(){
 function restartGame(){
   let over = document.querySelector('.game-over');
   document.querySelectorAll('.card').forEach(x => x.remove());
-  let colors = shuffle(COLORS);
-  createCards(colors);
+  createCards();
   resetScore();
 
   if(!gameOver()){
@@ -207,7 +214,6 @@ function gameOver(){
 
   over.style.display = 'grid';
   checkLowestScore(score);
-  console.log("GAME OVER")
   return true;
 }
 
@@ -242,17 +248,15 @@ function checkLowestScore(score){
 
 //Random images
 function randomImage(){
-  let randomNum = Math.floor(Math.random() * 1000);
+  let randomNum = Math.floor(Math.random() * 999999);
   return "https://picsum.photos/seed/" + randomNum + "/100/100";
 }
 
 //Generate image array
-function imageList(num){
+function imageList(){
   let images = [];
-  if(!num){
-    num = 10;
-  }
-  for(let i = 0; i < num; i++){
+
+  for(let i = 0; i < cardNum; i++){
     let image = randomImage();
     images.push(image);
     images.push(image);
@@ -261,10 +265,22 @@ function imageList(num){
   return images;
 }
 
-let imageArr = imageList();
+//Take input for number of cards
+
+
+function changeCardNum(){
+  let cardNumInput = document.querySelector('#card-number');
+  console.log(cardNumInput.value)
+  if(cardNumInput.value % 2 === 0){
+    cardNum = cardNumInput.value;
+    restartGame();
+  } else {
+    console.log("Please enter an even number");
+  }
+}
 initStart();
 
 // 2am - 5
 // 7pm - 9
-// 12am
+// 12am - 5
 
