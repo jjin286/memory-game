@@ -165,6 +165,8 @@ function initStart(){
 // Hide start menu and start game
 function startGame(){
   let start = document.querySelector('.start');
+  let gameBoard = document.getElementById("game");
+  gameBoard.classList.remove('hide');
   start.classList.add('hide');
 }
 
@@ -176,7 +178,10 @@ function restartGame(){
   resetScore();
 
   if(!gameOver()){
-    over.style.display = 'none';
+    over.classList.remove('triggered');
+    setTimeout(() => {
+      over.style.zIndex = -1;
+    }, 300)
   }
 }
 
@@ -191,7 +196,8 @@ function gameOver(){
     }
   }
 
-  over.style.display = 'grid';
+  over.classList.add('triggered');
+  over.style.zIndex = 5;
   checkLowestScore(score);
   return true;
 }
@@ -288,5 +294,6 @@ initStart();
 // 2am - 5
 // 7pm - 9
 // 12am - 5
-// 5
+// 5 10
+//
 
