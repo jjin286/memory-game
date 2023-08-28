@@ -1,5 +1,7 @@
 /* you can add to or change this. */
 body{
+  display: grid;
+  justify-content: center;
   font-family: 'Press Start 2P', cursive;
   color: white;
   background-color: black;
@@ -36,7 +38,7 @@ body{
   justify-content: center;
   align-items: start;
   font-size: 2vw;
-  margin: 0 20vw 0 20vw;
+  margin: 0 20vw;
   padding: 10px;
   cursor: pointer;
 }
@@ -72,7 +74,8 @@ body{
 
 /* Game */
 #game{
-  margin: 0 5vw;
+  width: 800px;
+  margin: 0 10vw;
 }
 
 .card {
@@ -93,6 +96,8 @@ body{
   height: 100%;
   backface-visibility: hidden;
   pointer-events: none;
+  background-color: black;
+  border: 1px solid lightgreen;
 }
 
 .back{
@@ -114,16 +119,17 @@ body{
 .bottom{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 0 5vw;
+  margin: 2vw 5vw;
 }
 
 input[type=text]{
-  width: 20%;
+  width: 80px;
   background-color: black;
   color: white;
   border: 1px solid lightgreen;
   padding: 2px;
   font-family: 'Press Start 2P', cursive;
+  border-radius: 5px;
 }
 
 input[type=submit]{
