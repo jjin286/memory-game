@@ -6,6 +6,7 @@ body{
   color: white;
   background-color: black;
   text-align: center;
+  overflow-x: hidden;
 }
 
 /* Start */
