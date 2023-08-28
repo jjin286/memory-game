@@ -264,12 +264,17 @@ function imageList(){
 
 function changeCardNum(){
   let cardNumInput = Number(document.querySelector('#card-number').value);
+  let warning = document.querySelector(".input-warning");
 
   if(cardNumInput % 2 === 0 && !isNaN(cardNumInput) && cardNumInput && cardNumInput <= 1982){
     cardNum = cardNumInput/2;
     restartGame();
   } else {
-    console.log("Please enter an even number");
+    console.log("Enter an even number between 2 and 1982");
+    warning.classList.add('triggered');
+    setTimeout(() => {
+      warning.classList.remove('triggered');
+    }, 1300)
   }
 }
 initStart();
@@ -279,6 +284,3 @@ initStart();
 // 12am - 5
 // 5
 
-
-// 86, 97, 105, 150, 205, 207, 224, 226, 245, 246, 262, 285, 286, 298, 303,
-// 332, 333, 346, 359, 394, 414, 422, 438, 462, 463, 470, 489, 540,

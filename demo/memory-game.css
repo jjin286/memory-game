@@ -117,9 +117,22 @@ body{
 /* Bottom */
 
 .bottom{
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 400px 400px;
   margin: 2vw 5vw;
+}
+
+.input-warning{
+  position: absolute;
+  top: -25px;
+  left: 200px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+.triggered{
+  opacity: 1;
 }
 
 input[type=text]{
