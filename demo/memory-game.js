@@ -259,24 +259,30 @@ function imageList(){
   return images;
 }
 
-//Take input for number of cards
-
-
+//Changes the number of cards
 function changeCardNum(){
   let cardNumInput = Number(document.querySelector('#card-number').value);
+  let lowestScoreBoard = document.querySelector('#lowest-score');
   let warning = document.querySelector(".input-warning");
 
-  if(cardNumInput % 2 === 0 && !isNaN(cardNumInput) && cardNumInput && cardNumInput <= 1982){
+  // Check if
+  if(cardNumInput % 2 === 0
+      && !isNaN(cardNumInput)
+      && cardNumInput
+      && cardNumInput <= 1982
+    ){
     cardNum = cardNumInput/2;
     restartGame();
+    lowestScore = Infinity;
+    lowestScoreBoard.textContent = "Best Score: 0";
   } else {
-    console.log("Enter an even number between 2 and 1982");
     warning.classList.add('triggered');
     setTimeout(() => {
       warning.classList.remove('triggered');
     }, 1300)
   }
 }
+
 initStart();
 
 // 2am - 5
