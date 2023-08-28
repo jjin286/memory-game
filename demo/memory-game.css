@@ -163,6 +163,3 @@ input[type=submit]:hover{
   cursor: pointer;
 }
 
-/* Change so that best score changes when card number changes */
-/* Check input if greater than certain number, is actually a number,
-  is an even number, and other requirements that may come to mind */
